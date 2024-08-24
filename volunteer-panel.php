@@ -248,10 +248,44 @@ function isCancelled($id)
           
           ?>
         </span>
-        <span class="total-points">
-            <strong>Total Points Earned: </strong><?php echo $totalPoints; ?>
-        </span>
+        
       </div>
+      <span class="total-points" style="
+    float: right;
+    margin-left: auto;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+    background: linear-gradient(90deg, #ff6f61, #d76d77, #3a1c71);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: pulse 2s infinite;
+    display: flex;
+    align-items: center;
+">
+    <strong>Total Points Earned: </strong>
+    <span style="
+        margin-left: 5px;
+        color: #fff;
+        font-size: 20px;
+    "><?php echo $totalPoints; ?></span>
+</span>
+
+<style>
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+</style>
+
     </nav>
     <!-- Default contents and dashboard contents -->
     <div class="home-content" id="list-dash">
@@ -516,9 +550,36 @@ function isCancelled($id)
             </tbody>
         </table>
         <br>
-        <div class="total-points">
-            <strong>Total Points Earned: </strong><?php echo $totalPoints; ?>
-        </div>
+        <div style="
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient background */
+    border-radius: 12px; /* Rounded corners */
+    padding: 15px 20px; /* Padding */
+    margin: 20px auto; /* Centering and margin */
+    display: inline-flex; /* Inline display with flex */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    font-family: 'Arial', sans-serif; /* Font family */
+    text-align: center; /* Center text */
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out; /* Transition effects */
+    position: relative; /* For possible future positioning needs */
+    overflow: hidden; /* Hide overflow */
+    cursor: pointer; /* Pointer cursor on hover */
+" onmouseover="this.style.background = 'linear-gradient(135deg, #feb47b, #ff7e5f)'; this.style.transform = 'scale(1.05)';" onmouseout="this.style.background = 'linear-gradient(135deg, #ff7e5f, #feb47b)'; this.style.transform = 'scale(1)';">
+    <strong style="
+        color: #fff; /* Text color */
+        font-size: 1.2em; /* Font size */
+        margin-right: 10px; /* Space between strong text and value */
+    ">Total Points Earned:</strong>
+    <span style="
+        color: #fff; /* Text color */
+        font-size: 2em; /* Font size */
+        font-weight: bold; /* Font weight */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+    "><?php echo $totalPoints; ?></span>
+</div>
+
+        
     </div>
 </div>
 
@@ -589,7 +650,7 @@ function isCancelled($id)
                 $servername = "localhost";
                 $username = "root";
                 $password = "";
-                $dbname = "checkss";
+                $dbname = "shikshashastra1";
 
                 // Create connection
                 $conn = new mysqli($servername, $username, $password, $dbname);

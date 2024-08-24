@@ -45,15 +45,14 @@
             background-color: #e9e9e9;
         }
 
-        img {
-            width: 100px;
-            height: auto;
-            border-radius: 5px;
-            transition: transform 0.3s ease;
+        .document-link {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        img:hover {
-            transform: scale(1.2);
+        .document-link:hover {
+            text-decoration: underline;
         }
 
         .delete-button {
@@ -77,7 +76,7 @@
 $servername = "localhost";
 $username = "root";  // Adjust based on your database credentials
 $password = "";
-$dbname = "checkss";  // Your database name
+$dbname = "shikshashastra1";  // Your database name
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -106,7 +105,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     echo "<h2>Volunteer Documents</h2>";
-    echo "<table border='1' cellpadding='10'>
+    echo "<table>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -121,11 +120,11 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr>
                 <td>" . $row['id'] . "</td>
-                <td>" . $row['name'] . "</td>
-                <td>" . $row['gmail'] . "</td>
-                <td><img src='" . $row['file1_path'] . "' alt='Aadhar Card'></td>
-                <td><img src='" . $row['file2_path'] . "' alt='12th Mark Sheet'></td>
-                <td><img src='" . $row['file3_path'] . "' alt='Graduation Certificate'></td>
+                <td>" . htmlspecialchars($row['name']) . "</td>
+                <td>" . htmlspecialchars($row['gmail']) . "</td>
+                <td><a href='" . htmlspecialchars($row['file1_path']) . "' class='document-link' target='_blank'>View Aadhar Card</a></td>
+                <td><a href='" . htmlspecialchars($row['file2_path']) . "' class='document-link' target='_blank'>View 12th Mark Sheet</a></td>
+                <td><a href='" . htmlspecialchars($row['file3_path']) . "' class='document-link' target='_blank'>View Graduation Certificate</a></td>
                 <td>
                     <form method='POST' action='' onsubmit='return confirm(\"Are you sure you want to delete this record?\");'>
                         <input type='hidden' name='delete_id' value='" . $row['id'] . "'>
