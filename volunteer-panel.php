@@ -647,17 +647,17 @@ function isCancelled($id)
                 $gmail = $_POST['gmail'];
 
                 // Database connection
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "shikshashastra1";
+                // $servername = "localhost";
+                // $username = "root";
+                // $password = "";
+                // $dbname = "shikshashastra1";
 
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
+                // // Create connection
+                // $conn = new mysqli($servername, $username, $password, $dbname);
 
                 // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
+                if ($con->connect_error) {
+                    die("Connection failed: " . $con->connect_error);
                 }
 
                 // Check if name or gmail already exists
@@ -699,7 +699,7 @@ function isCancelled($id)
 
                     // Insert into database
                     $insertQuery = "INSERT INTO volunteer_documents (name, gmail, file1_path, file2_path, file3_path) VALUES (?, ?, ?, ?, ?)";
-                    $stmtInsert = $conn->prepare($insertQuery);
+                    $stmtInsert = $con->prepare($insertQuery);
                     $stmtInsert->bind_param("sssss", $name, $gmail, $file1Path, $file2Path, $file3Path);
 
                     // Execute and check success
@@ -714,7 +714,7 @@ function isCancelled($id)
 
                 // Close connections
                 $stmtCheck->close();
-                $conn->close();
+                $con->close();
             }
             ?>
         </div>

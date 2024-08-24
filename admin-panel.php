@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <?php
-$con = mysqli_connect("localhost", "root", "", "shikshashastra1");
+include("connect.php");
+// $con = mysqli_connect("localhost", "root", "", "shikshashastra1");
 include('newfunction.php');
 
 if (!$con) {

@@ -73,15 +73,16 @@
 <body>
 
 <?php
-$servername = "localhost";
-$username = "root";  // Adjust based on your database credentials
-$password = "";
-$dbname = "shikshashastra1";  // Your database name
+// $servername = "localhost";
+// $username = "root";  // Adjust based on your database credentials
+// $password = "";
+// $dbname = "shikshashastra1";  // Your database name
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// $conn = new mysqli($servername, $username, $password, $dbname);
+include("connect.php");
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
 }
 
 // Handle delete request
@@ -101,7 +102,7 @@ if (isset($_POST['delete_id'])) {
 
 // Fetch volunteer documents from the database
 $sql = "SELECT id, name, gmail, file1_path, file2_path, file3_path FROM volunteer_documents";
-$result = $conn->query($sql);
+$result = $con->query($sql);
 
 if ($result->num_rows > 0) {
     echo "<h2>Volunteer Documents</h2>";
@@ -139,7 +140,7 @@ if ($result->num_rows > 0) {
     echo "<p style='text-align:center; color: #FF0000;'>No volunteer documents found.</p>";
 }
 
-$conn->close();
+$con->close();
 ?>
 
 </body>
