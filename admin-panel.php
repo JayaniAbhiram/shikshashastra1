@@ -177,7 +177,7 @@ function validateDeleteCommunityForm() {
       <!-- <i class='bx bx-plus-medical'></i> -->
       <i class='bx bx-book'></i>
 
-      <span class="logo_name"><a href="#"> Shiksha Shastra</a></span>
+      <span class="logo_name"><a href="admin-panel.php"> Shiksha Shastra</a></span>
     </div>
     <ul class="nav-links">
       <li>
@@ -198,6 +198,7 @@ function validateDeleteCommunityForm() {
           <span class="links_name">Volunteers list</span>
         </a>
       </li>
+      
       <li>
         <a href="#list-app" id="list-app-list" role="tab" data-toggle="list" aria-controls="home">
           <i class='bx bx-detail'></i>
@@ -216,8 +217,28 @@ function validateDeleteCommunityForm() {
           <span class="links_name">Add Communitiy</span>
         </a>
       </li>
+      <span>
+    <a href="volunteerDetailsDocuments.php" style="text-decoration: none;">
+        <button style="
+            margin-left: 10px;
+            margin-right:10px;
+            background-color: transparent;
+            border: 2px solid #007BFF;
+            color: #007BFF;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        ">
+            View Volunteer Documents
+        </button>
+    </a>
+</span>
+
       <!-- <li>
-        <a href="volunteerDetailsDocuments.php" id="list-adoc-list" role="tab" data-toggle="list" aria-controls="home">
+        <a href="#volunteerDocuments" id="list-adoc-list" role="tab" data-toggle="list" aria-controls="home">
           <i class='bx bxs-book-add'></i>
           <span class="links_name">view volunteer documents</span>
         </a>
@@ -225,7 +246,7 @@ function validateDeleteCommunityForm() {
       
 
       
-      <button style="margin-left:50px;"><a href="volunteerDetailsDocuments.php">view Documents</button>
+      
       <li class="log_out">
         <a href="logout.php" onclick="logout()">
           <i class='bx bx-log-out'></i>
@@ -362,7 +383,8 @@ function validateDeleteCommunityForm() {
         <tbody>
           <!-- Table rows with dynamic data -->
           <?php
-          $con = mysqli_connect("localhost", "root", "", "shikshashastra1");
+          // $con = mysqli_connect("localhost", "root", "", "shikshashastra1");
+          include("connect.php");
           global $con;
           $query = "select * from community";
           $result = mysqli_query($con, $query);
@@ -393,14 +415,17 @@ function validateDeleteCommunityForm() {
     <!-- List volunteers section  -->
     <div class="home-content" id="list-pat">
       <div>
+      
         <form class="form-group" action="volunteersearch.php" method="post">
           <div class="psearch">
             <div class="email-field">
               <input type="text" name="volunteer_contact" placeholder="Enter Contact" class="form-control">
             </div>
+            
             <div class="submit-btn">
               <input type="submit" name="volunteer_search_submit" class="btn btn-primary" value="Search">
             </div>
+            
           </div>
         </form>
       </div>
@@ -424,7 +449,7 @@ function validateDeleteCommunityForm() {
         <tbody>
           <!-- Table rows with dynamic data -->
           <?php
-$con = mysqli_connect("localhost", "root", "", "shikshashastra1");
+// $con = mysqli_connect("localhost", "root", "", "shikshashastra1");
 global $con;
 
 // Query to join volunteer table with feedback table and calculate total_feedbackpoints
@@ -500,7 +525,7 @@ while ($row = mysqli_fetch_array($result)) {
         <tbody>
           <?php
 
-          $con = mysqli_connect("localhost", "root", "", "shikshashastra1");
+          // $con = mysqli_connect("localhost", "root", "", "shikshashastra1");
           global $con;
 
           $query = "select * from book;";
@@ -566,7 +591,7 @@ while ($row = mysqli_fetch_array($result)) {
           </thead>
           <tbody>
           <?php
-$con = mysqli_connect("localhost", "root", "", "shikshashastra1");
+// $con = mysqli_connect("localhost", "root", "", "shikshashastra1");
 global $con;
 
 // Query to get feedback data along with the total feedback points for each volunteer
@@ -668,6 +693,13 @@ while ($row = mysqli_fetch_array($result)) {
       </div>
     </div>
   </div>
+
+
+
+  
+
+
+
   <!-- <script>
   let sidebar = document.querySelector(".sidebar");
   let sidebarBtn = document.querySelector(".sidebarBtn");
